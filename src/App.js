@@ -1,4 +1,4 @@
-
+import React from 'react';
 
 
 function App() {
@@ -7,4 +7,11 @@ function App() {
   )
 }
 
-export default App;
+const element = React.createElement(
+    'div',
+    {
+        className: 'container',
+        children: 'meow'
+    }
+)
+export { element, App};
