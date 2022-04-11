@@ -25,7 +25,7 @@ const Todo = (props) => {
             <div className='actions'>
                 <button className='btn' onClick={handleDelete}>Delete</button>
             </div>
-            { modalIsOpen ? <Modal/> : null}
+            { modalIsOpen ? <Modal onCancel={cancelDelete} onConfirm={cancelDelete}/> : null}
             { modalIsOpen ? <Backdrop onClick={cancelDelete}/> : null}
 
         </div>
