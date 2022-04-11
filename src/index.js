@@ -7,13 +7,17 @@ const val = element;
 const root = ReactDOM.createRoot(
     document.getElementById('root')
 );
-root.render(
-    <div>
-        {element}
-        <App/>
-    </div>
 
-);
+function tick() {
+    const timeElement = (
+        <div>
+            {new Date().toLocaleTimeString()}
+        </div>
+    );
+    root.render(timeElement)
+}
+
+setInterval(tick, 1000)
 console.log(val);
 
 // If you want to start measuring performance in your app, pass a function
