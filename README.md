@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# React Notes
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Embedding Expressions in JSX
+    const name = 'Josh Perez';
+    const element = <h1>Hello, {name}</h1>;
+This way you can but a string into a jsx expression
 
-## Available Scripts
+## JSX represents objects
+    const element = (
+        <h1 className="greeting">
+        Hello, world!
+        </h1>
+    );
+This is exactly the same as the example below
 
-In the project directory, you can run:
+    const element = React.createElement(
+        'h1',
+        {className: 'greeting'},
+        'Hello, world!'
+    );
 
-### `npm start`
+## Rendering an Element into the DOM
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Since React 18 we use a different syntax.       
+First we need to select the root folder where all our html is gonna be placed.
+    
+    const root = ReactDOM.createRoot(
+    document.getElementById('root')
+    );
+After that we can call the the **root.render()** function which will render whats inside the () into the DOM
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Function components
 
-### `npm test`
+This is the most up to date way to make a component     
+Components are basically JS functions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    function Welcome(props) {
+    return <h1>Hello, {props.name}</h1>;
+    }
 
-### `npm run build`
+This is a React Component that asks for a parameter
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    function Welcome(props) {
+        return <h1>Hello, {props.name}</h1>;
+    }
+    
+    const element = <Welcome name="Sara" />;
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(element);
+    
+Here we make an element that has the **Welcome** component and we give through a name "Sara"
+All whats given though is defined as props which stands for properties.     
+In this example we give though a name and we can acces it by doing props.name
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

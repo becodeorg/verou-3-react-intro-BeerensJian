@@ -1,12 +1,15 @@
 import React from 'react';
-
+import Todo from './components/Todo'
 
 function App() {
-  return (
-      <div>
-          <p>Hello World</p>
-      </div>
-  )
+    return (
+        <div>
+            <h1>My Todolist</h1>
+            <Todo />
+            <Todo />
+            <Todo />
+        </div>
+    )
 }
 
 const element = React.createElement(
@@ -16,4 +19,4 @@ const element = React.createElement(
         children: 'meow'
     }
 )
-export { element, App};
+export {element, App};
