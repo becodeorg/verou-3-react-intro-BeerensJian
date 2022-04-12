@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useRef } from "react";
 
-function Form() {
+function Form(props) {
+
+    const inputRef = useRef();
+    function clickHandler() {
+        const inputElement = inputRef.current;
+
+        // do somethign with the input element
+        const todo = inputElement.value;
+        console.log(todo)
+        return todo;
+
+    }
+
     return (
-        <form action="">
+        <div>
             <h2>Add a ToDo</h2>
-            <input type="text" name="todo"/>
-            <input type="submit"/>
+            <input ref={inputRef} type="text" name="todo"/>
+            <button onClick={() => props.changeWord(clickHandler)}>Add todo</button>
             <hr/>
-        </form>
+        </div>
     );
 }
 
