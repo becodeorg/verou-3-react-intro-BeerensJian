@@ -5,11 +5,15 @@
 body {
     font-family: sans-serif;
     margin: 3rem;
-    background-color: #dfdfdf;
+    background-color: #4299bc;
 }
 
 h1, h2 {
-    color: #333333;
+    color: #262323;
+}
+
+header {
+    text-align: center;
 }
 
 .btn {
@@ -70,4 +74,7 @@ h1, h2 {
     height: 100vh;
     top: 0;
     left: 0;
+}
+li {
+    list-style-type: none;
 }
