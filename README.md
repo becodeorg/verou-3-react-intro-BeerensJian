@@ -1,5 +1,5 @@
 # React Notes
-
+:pizza:
 ## Embedding Expressions in JSX
     const name = 'Josh Perez';
     const element = <h1>Hello, {name}</h1>;

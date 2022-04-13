@@ -4,16 +4,15 @@ import { useState } from "react";
 
 function App2() {
     
-    const [ todotext , setToDoText] = useState('parent');
-
+    const [ todotext , setToDoText] = useState('');
+    
 
     return (
         <div>
-        <h1>{todotext}</h1>
-        <Form 
-            changeWord={todotext => setToDoText(todotext)} />
+        <h1>My todolist {todotext}</h1>
+        <Form changeWord={todotext => setToDoText(todotext)} />
 
-        <Todolist />
+        <Todolist addedTodo={todotext} />
         </div>
     )
 }
