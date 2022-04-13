@@ -78,3 +78,7 @@ header {
 li {
     list-style-type: none;
 }
+
+.strip-through {
+    text-decoration: line-through;
+}

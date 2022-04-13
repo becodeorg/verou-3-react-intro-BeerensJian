@@ -32,10 +32,19 @@ export default function Todolist(props) {
     },[props.addedTodo]);
     
 
-    function checkDelete(text) {
-        const newArray = todos.filter( item => item.text !== text);
-        setTodos(newArray);
-    };
+    // function checkDelete(text) {
+    //     const newArray = todos.filter( item => item.text !== text);
+    //     setTodos(newArray);
+    // };
+    function isDone(index) {
+        const listElements = document.querySelectorAll('li p')
+        if (listElements[index].classList.contains('strip-through')) {
+            listElements[index].classList.remove('strip-through');
+        } else {
+            listElements[index].classList.add("strip-through");
+        }
+        
+    }
 
     return (
 
@@ -43,7 +52,7 @@ export default function Todolist(props) {
             {todos.map((todo, index) => (
                 
                 <li key={"Key" + index}> 
-                    <input type="checkbox" onChange={() => {checkDelete(todo.text)}}/> {todo.text}    
+                    <input type="checkbox" onChange={() => isDone(index)}/> <p>{todo.text}</p>  
                 </li>
             ))}
         </ul>
