@@ -1,17 +1,17 @@
 
 function Edit(props) {
 
-    function someFunc() {
+    // function someFunc() {
         
-    }
+    // }
 
     return (
         <div>
-            <input type="text" value={"rops.value"} />
-            <button onClick={someFunc}>Save</button>
+            <input type="text" defaultValue={props.todoValue.text} />
+            <button >Save</button>
         </div>
         
     )
 }
 
-export default Edit()
+export default Edit;

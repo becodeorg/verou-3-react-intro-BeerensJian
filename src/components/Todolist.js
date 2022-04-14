@@ -52,9 +52,14 @@ export default function Todolist(props) {
 
     // TODO: show Edit compnent under a todo when doubleclicked
     function editTodo(index) {
-        const toEditTodo = todos[index];
-        toEditTodo.state = true;
-        console.log(toEditTodo);
+        const toEditTodo = localTodos[index]
+        const newTodoObject = {
+            text: toEditTodo.text,
+            state: true,
+        }
+        const newArray = [...todos]
+        newArray.splice(index, 1, newTodoObject);
+        setTodos(newArray);
     }
 
     
@@ -71,6 +76,7 @@ export default function Todolist(props) {
                 <li key={"Key" + index}> 
                     <input type="checkbox" onChange={() => isDone(index)}/> <span onDoubleClick={() => editTodo(index)}>{todo.text} <button onClick={() => deleteTodo(todo.text)}>Delete</button></span>
                     
+                    {todo.state === true ? <Edit todoValue={todo}/> : null}
                 </li>
                 
                 
