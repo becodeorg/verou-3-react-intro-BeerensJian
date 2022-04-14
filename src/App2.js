@@ -9,8 +9,8 @@ function App2() {
 
 
     return (
-        <div>
-        <h1>My todolist {todotext}</h1>
+        <div className="container">
+        
         <Form changeWord={todotext => setToDoText(todotext)} />
         <Todolist addedTodo={todotext} />
         </div>

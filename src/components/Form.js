@@ -16,12 +16,12 @@ function Form(props) {
 
 
     return (
-        <div>
-            <h2>Add a ToDo</h2>
+        <div className="headercard">
+            <h2>Add a Todo</h2>
             <input ref={inputRef} type="text" name="todo"/>
-            <button onClick={() => props.changeWord(clickHandler)}>Add todo</button>
+            <button className="button-30" onClick={() => props.changeWord(clickHandler)}>Add todo</button>
 
-            <hr/>
+            
         </div>
     );
 }

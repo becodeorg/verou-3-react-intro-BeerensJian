@@ -63,14 +63,15 @@ export default function Todolist(props) {
     }
 
     
+    
     useEffect(() => {
         window.localStorage.setItem(LSKEY + ".todos", JSON.stringify(todos));
       });
 
     return (
         <div>
-        <button onClick={() => console.log(localTodos)}>Show Todo Array</button>
-        <ul>
+        
+        <ul className="card2">
             {todos.map((todo, index) => (
                 
                 <li key={"Key" + index}> 

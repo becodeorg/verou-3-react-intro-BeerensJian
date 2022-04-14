@@ -1,14 +1,14 @@
 
 function Edit(props) {
 
-    // function someFunc() {
+    function updateTodo() {
         
-    // }
+    }
 
     return (
         <div>
             <input type="text" defaultValue={props.todoValue.text} />
-            <button >Save</button>
+            <button onClick={updateTodo}>Save</button>
         </div>
         
     )
