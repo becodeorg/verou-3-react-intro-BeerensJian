@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from "react";
 
+const LSKEY = "myTodoList";
+
 export default function Todolist(props) {
 
     
@@ -14,9 +16,9 @@ export default function Todolist(props) {
         },
     ];
 
-
-
-    const [todos, setTodos] = useState(InitialTodos);
+    
+    const localTodos = JSON.parse(localStorage.getItem(LSKEY + ".todos")) || InitialTodos;
+    const [todos, setTodos] = useState(localTodos);
 
     
     useEffect(() => {
@@ -32,27 +34,31 @@ export default function Todolist(props) {
     },[props.addedTodo]);
     
 
-    // function checkDelete(text) {
-    //     const newArray = todos.filter( item => item.text !== text);
-    //     setTodos(newArray);
-    // };
+    function deleteTodo(text) {
+        const newArray = todos.filter( item => item.text !== text);
+        setTodos(newArray);
+    };
+
     function isDone(index) {
-        const listElements = document.querySelectorAll('li p')
+        const listElements = document.querySelectorAll('li span')
         if (listElements[index].classList.contains('strip-through')) {
             listElements[index].classList.remove('strip-through');
         } else {
             listElements[index].classList.add("strip-through");
-        }
-        
-    }
+        }  
+    };
+
+    useEffect(() => {
+        window.localStorage.setItem(LSKEY + ".todos", JSON.stringify(todos));
+      });
 
     return (
 
         <ul>
             {todos.map((todo, index) => (
-                
+
                 <li key={"Key" + index}> 
-                    <input type="checkbox" onChange={() => isDone(index)}/> <p>{todo.text}</p>  
+                    <input type="checkbox" onChange={() => isDone(index)}/> <span>{todo.text} <button onClick={() => deleteTodo(todo.text)}>Delete</button></span>  
                 </li>
             ))}
         </ul>
