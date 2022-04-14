@@ -71,7 +71,7 @@ export default function Todolist(props) {
     return (
         <div>
         
-        <ul className="card2">
+        <ul className="card">
             {todos.map((todo, index) => (
                 
                 <li key={"Key" + index}> 
