@@ -55,11 +55,19 @@ export default function Todolist(props) {
         const toEditTodo = localTodos[index]
         const newTodoObject = {
             text: toEditTodo.text,
-            state: true,
+            state: false,
         }
-        const newArray = [...todos]
-        newArray.splice(index, 1, newTodoObject);
-        setTodos(newArray);
+        if (toEditTodo.state === true) {
+
+            const newArray = [...todos]
+            newArray.splice(index, 1, newTodoObject);
+            setTodos(newArray);
+        } else {
+            newTodoObject.state = true;
+            const newArray = [...todos]
+            newArray.splice(index, 1, newTodoObject);
+            setTodos(newArray);
+        }
     }
 
     
@@ -75,8 +83,7 @@ export default function Todolist(props) {
             {todos.map((todo, index) => (
                 
                 <li key={"Key" + index}> 
-                    <input type="checkbox" onChange={() => isDone(index)}/> <span onDoubleClick={() => editTodo(index)}>{todo.text} <button onClick={() => deleteTodo(todo.text)}>Delete</button></span>
-                    
+                    <input type="checkbox" onChange={() => isDone(index)}/> <span onDoubleClick={() => editTodo(index)}>{todo.text} <button className="deleteButton" onClick={() => deleteTodo(todo.text)}>❌</button></span>
                     {todo.state === true ? <Edit todoValue={todo}/> : null}
                 </li>
                 
