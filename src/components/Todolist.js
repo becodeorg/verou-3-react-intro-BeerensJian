@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from "react";
+import Edit from "./Edit";
+
 
 const LSKEY = "myTodoList";
 
@@ -26,7 +28,7 @@ export default function Todolist(props) {
 
             const newTodo = {
                 text: props.addedTodo,
-                status: false,
+                state: false,
             }
             setTodos([...todos, newTodo])
         }
@@ -48,19 +50,34 @@ export default function Todolist(props) {
         }  
     };
 
+    // TODO: show Edit compnent under a todo when doubleclicked
+    function editTodo(index) {
+        const toEditTodo = todos[index];
+        toEditTodo.state = true;
+        console.log(toEditTodo);
+    }
+
+    
     useEffect(() => {
         window.localStorage.setItem(LSKEY + ".todos", JSON.stringify(todos));
       });
 
     return (
-
+        <div>
+        <button onClick={() => console.log(localTodos)}>Show Todo Array</button>
         <ul>
             {todos.map((todo, index) => (
-
+                
                 <li key={"Key" + index}> 
-                    <input type="checkbox" onChange={() => isDone(index)}/> <span>{todo.text} <button onClick={() => deleteTodo(todo.text)}>Delete</button></span>  
+                    <input type="checkbox" onChange={() => isDone(index)}/> <span onDoubleClick={() => editTodo(index)}>{todo.text} <button onClick={() => deleteTodo(todo.text)}>Delete</button></span>
+                    
                 </li>
+                
+                
             ))}
+            
         </ul>
+        </div>
+        
     )
 }
