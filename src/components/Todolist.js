@@ -21,7 +21,7 @@ export default function Todolist(props) {
     
     const localTodos = JSON.parse(localStorage.getItem(LSKEY + ".todos")) || InitialTodos;
     const [todos, setTodos] = useState(localTodos);
-
+    const copyOfTodos = [...todos];
     
     useEffect(() => {
         if (props.addedTodo !== '') {
@@ -84,7 +84,7 @@ export default function Todolist(props) {
                 
                 <li key={"Key" + index}> 
                     <input type="checkbox" onChange={() => isDone(index)}/> <span onDoubleClick={() => editTodo(index)}>{todo.text} <button className="deleteButton" onClick={() => deleteTodo(todo.text)}>❌</button></span>
-                    {todo.state === true ? <Edit todoValue={todo}/> : null}
+                    {todo.state === true ? <Edit updateTodos={todos => setTodos(todos)} todoValue={todo} todoIndex={index} todosState={copyOfTodos}/> : null}
                 </li>
                 
                 

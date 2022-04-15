@@ -19,7 +19,7 @@ function Form(props) {
         <div className="headercard">
             <h2>Add a Todo</h2>
             <input ref={inputRef} type="text" name="todo"/>
-            <button className="button-30" onClick={() => props.changeWord(clickHandler)}>Add todo</button>
+            <button  onClick={() => props.changeWord(clickHandler)}>Add todo</button>
 
             
         </div>
